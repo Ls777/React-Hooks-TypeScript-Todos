@@ -1,29 +1,19 @@
 import React, { Component } from "react"
 import "../App.css"
-import { Todo } from "../react-app-env"
 import TodoItem from "./TodoItem"
 import TodoFooter from "./TodoFooter"
 
-interface Props {
-  todos: Todo[]
-  setTodos: (todos: Todo[]) => void
-}
-
-interface InputTodoState {
-  selected: string
-}
-
-class InputTodo extends Component<Props, InputTodoState> {
-  state: InputTodoState = {
+class InputTodo extends Component {
+  state = {
     selected: ""
   }
 
-  setSelected = (selected: string) => {
+  setSelected = selected => {
     this.setState({ selected })
   }
 
   handleDisplayed = () => {
-    const { todos, setTodos } = this.props
+    const { todos } = this.props
     const { selected } = this.state
 
     if (selected === "Active") {

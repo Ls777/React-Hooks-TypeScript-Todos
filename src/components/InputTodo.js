@@ -1,18 +1,10 @@
-import React, { FunctionComponent } from "react"
+import React from "react"
 import "../App.css"
-import { Todo } from "../react-app-env"
 
-interface Props {
-  currentTodo: string
-  setCurrentTodo: (currentTodo: string) => void
-  todos: Todo[]
-  setTodos: (todos: Todo[]) => void
-}
-
-const InputTodo: FunctionComponent<Props> = props => {
+const InputTodo = props => {
   const { currentTodo, todos, setCurrentTodo, setTodos } = props
 
-  const handleCreateTodo = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleCreateTodo = e => {
     if (currentTodo && e.key === "Enter") {
       setTodos([
         ...todos,
@@ -31,17 +23,9 @@ const InputTodo: FunctionComponent<Props> = props => {
   const handleAllTodos = () => {
     const uncompleted = todos.filter(todo => todo.completed === false)
     if (uncompleted.length > 0) {
-      setTodos(
-        todos.map(todo => {
-          return { ...todo, completed: true }
-        })
-      )
+      setTodos(todos.map(todo => ({ ...todo, completed: true })))
     } else {
-      setTodos(
-        todos.map(todo => {
-          return { ...todo, completed: false }
-        })
-      )
+      setTodos(todos.map(todo => ({ ...todo, completed: false })))
     }
   }
 

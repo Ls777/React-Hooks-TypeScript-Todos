@@ -1,23 +1,16 @@
-import React, { FunctionComponent } from "react"
+import React from "react"
 import "../App.css"
-import { Todo } from "../react-app-env"
 
-interface Props {
-  todo: Todo
-  todos: Todo[]
-  setTodos: (todos: Todo[]) => void
-}
-
-const TodoItem: FunctionComponent<Props> = props => {
+const TodoItem = props => {
   const { todo, todos, setTodos } = props
 
-  const formatDate = (date: Date) => {
+  const formatDate = date => {
     return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
   }
 
   const handleToggle = () => {
     setTodos(
-      todos.map((todoIterated: Todo) => {
+      todos.map(todoIterated => {
         if (todoIterated.id === todo.id) {
           return { ...todoIterated, completed: !todoIterated.completed }
         } else {
@@ -28,9 +21,7 @@ const TodoItem: FunctionComponent<Props> = props => {
   }
 
   const removeTodo = () => {
-    setTodos(
-      todos.filter((todoIteration: Todo) => todoIteration.id !== todo.id)
-    )
+    setTodos(todos.filter(todoIteration => todoIteration.id !== todo.id))
   }
 
   return (

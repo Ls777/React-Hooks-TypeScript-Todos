@@ -2,24 +2,18 @@ import React, { Component } from "react"
 import "./App.css"
 import InputTodo from "./components/InputTodo"
 import TodoList from "./components/TodoList"
-import { Todo } from "./react-app-env"
 
-interface AppState {
-  todos: Todo[]
-  currentTodo: string
-}
-
-class App extends Component<{}, AppState> {
-  state: AppState = {
+class App extends Component {
+  state = {
     todos: [],
     currentTodo: ""
   }
 
-  setTodos = (todos: Todo[]) => {
+  setTodos = todos => {
     this.setState({ todos })
   }
 
-  setCurrentTodo = (todo: string) => {
+  setCurrentTodo = todo => {
     this.setState({ currentTodo: todo })
   }
 
