@@ -1,11 +1,18 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import "../App.css"
+import { Todo } from "../react-app-env"
 
-const TodoItem = props => {
+interface Props {
+  todo: Todo
+  todos: Todo[]
+  setTodos: (todos: Todo[]) => void
+}
+
+const TodoItem: FunctionComponent<Props> = props => {
   const { todo, todos, setTodos } = props
 
-  const formatDate = date => {
-    return `${date.getMonth()}/${date.getDate()}/${date.getFullYear()}`
+  const formatDate = (date: Date) => {
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`
   }
 
   const handleToggle = () => {

@@ -1,10 +1,18 @@
-import React from "react"
+import React, { FC } from "react"
 import "../App.css"
+import { Todo } from "../react-app-env"
 
-const InputTodo = props => {
+interface Props {
+  currentTodo: string
+  setCurrentTodo: (currentTodo: string) => void
+  todos: Todo[]
+  setTodos: (todos: Todo[]) => void
+}
+
+const InputTodo: FC<Props> = props => {
   const { currentTodo, todos, setCurrentTodo, setTodos } = props
 
-  const handleCreateTodo = e => {
+  const handleCreateTodo = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (currentTodo && e.key === "Enter") {
       setTodos([
         ...todos,

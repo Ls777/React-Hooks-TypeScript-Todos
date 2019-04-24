@@ -1,7 +1,15 @@
-import React from "react"
+import React, { FunctionComponent } from "react"
 import "../App.css"
+import { Todo } from "../react-app-env"
 
-const TodoFooter = props => {
+interface Props {
+  todos: Todo[]
+  setTodos: (todos: Todo[]) => void
+  selected: string
+  setSelected: (selected: string) => void
+}
+
+const TodoFooter: FunctionComponent<Props> = props => {
   const { todos, setTodos, selected, setSelected } = props
 
   const itemsLeft = () => {
@@ -12,7 +20,7 @@ const TodoFooter = props => {
       : `${uncompleted.length} items left`
   }
 
-  const handleOption = option => {
+  const handleOption = (option: string) => {
     setSelected(option)
   }
 

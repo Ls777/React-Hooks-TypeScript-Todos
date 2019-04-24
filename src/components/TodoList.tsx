@@ -2,13 +2,23 @@ import React, { Component } from "react"
 import "../App.css"
 import TodoItem from "./TodoItem"
 import TodoFooter from "./TodoFooter"
+import { Todo } from "../react-app-env"
 
-class InputTodo extends Component {
-  state = {
+interface Props {
+  todos: Todo[]
+  setTodos: (todos: Todo[]) => void
+}
+
+interface InputTodoState {
+  selected: string
+}
+
+class InputTodo extends Component<Props, InputTodoState> {
+  state: InputTodoState = {
     selected: ""
   }
 
-  setSelected = selected => {
+  setSelected = (selected: string) => {
     this.setState({ selected })
   }
 
